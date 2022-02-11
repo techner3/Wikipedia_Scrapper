@@ -1,0 +1,8 @@
+numpy 
+pandas
+matplotlib
+pybase64
+pymongo
+flask
+bs4
+nltk
