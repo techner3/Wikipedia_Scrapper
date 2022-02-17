@@ -4,5 +4,6 @@ matplotlib
 pybase64
 pymongo
 flask
+flask_cors
 bs4
 nltk

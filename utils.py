@@ -2,9 +2,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 import base64
 import requests
-import io
 import re
-import PIL.Image as Image
+import pandas as pd
 
 def beautifyTextData(info):
     text=''
@@ -81,3 +80,6 @@ def beautifyImgdata(info):
         encodeImg=Imgtobase64(img.content)
         imgList.append(encodeImg)
     return imgList
+
+def Dict_DF(data):
+    return pd.DataFrame(data)
