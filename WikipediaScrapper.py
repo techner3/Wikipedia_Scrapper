@@ -24,7 +24,7 @@ class Scrapper():
             Page = uClient.read()
             uClient.close()
             html = bs(Page, "html.parser")
-            logger.info("Raw HTML data retrieved")
+            logger.info("URL hitted")
             return html
         except Exception as e:
             logger.exception(f'Something went wrong while Hitting the Page : \n {str(e)}')

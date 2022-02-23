@@ -25,7 +25,6 @@ def scrap():
             collection_name=searchString.capitalize()
             scrapper_obj=Scrapper(searchString)
             html=scrapper_obj.getContent()
-            logger.info("URL hitted")
             logger.info("Data collection Started")
             textdata=scrapper_obj.getTextdata(html)
             logger.info("Text data obtained")
