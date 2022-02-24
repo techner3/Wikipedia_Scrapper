@@ -49,6 +49,15 @@ class MongoDB():
             return db
         except Exception as e:
             logger.exception(f"Failed to create DB : \n{e}")
+
+    def getDB(self,db_name,client):
+
+        try:
+            db=client[db_name]
+            logger.info("DB retrieved")
+            return db
+        except Exception as e:
+            logger.exception(f"Failed to retriev DB : \n{e}")
     
     def dropDB(self,db_name,client):
 
@@ -82,6 +91,27 @@ class MongoDB():
             return collection
         except Exception as e:
             logger.exception(f"Failed to create collection : \n{e}")
+    
+    def getCollection(self,db_name,collection_name,client):
+
+        try:
+            db=self.getDB(db_name,client)
+            collection=db[collection_name]
+            logger.info("Collection retrieved")
+            return collection
+        except Exception as e:
+            logger.exception(f"Failed to retrive collection : \n{e}")
+
+    def getCollectionData(self,db_name,collection_name,client):
+
+        try:
+            collection=self.getCollection(db_name,collection_name,client)
+            data=collection.find({},{'_id':0})
+            logger.info("Collection data retrieved")
+            return data.next()
+        except Exception as e:
+            logger.exception(f"Failed to retrive collection : \n{e}")
+    
 
     def dropCollection(self,db_name,collection_name,client):
 
@@ -97,10 +127,7 @@ class MongoDB():
 
         try:
             collection=self.createCollection(db_name,collection_name,client)
-            if self.isCollectionpresent(db_name,collection_name,client):
-                logger.info("Collection is already present")
-            else:
-                collection.insert_one(data)
-                logger.info("Inserted data")
+            collection.insert_one(data)
+            logger.info("Data Inserted")
         except Exception as e:
             logger.exception(f"Failed to insert data : \n{e}")
