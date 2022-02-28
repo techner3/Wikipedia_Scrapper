@@ -13,6 +13,7 @@ class MongoDB():
             logger.info("DB object has been successfully intialized")
         except Exception as e:
             logger.exception(f"Failed to intialize DB object : \n{e}")
+            raise Exception("Failed to intialize DB object")
     
     def openConnection(self):
 
@@ -22,6 +23,7 @@ class MongoDB():
             return client
         except Exception as e:
             logger.exception(f"Failed to open connection : \n{e}")
+            raise Exception("Failed to open connection")
 
     def closeConnection(self,client):
 
@@ -30,6 +32,7 @@ class MongoDB():
             logger.info("DB connection closed")
         except Exception as e:
             logger.exception(f"Failed to close connection : \n{e}")
+            raise Exception("Failed to close connection")
 
     def isDBpresent(self,db_name,client):
 
@@ -40,6 +43,7 @@ class MongoDB():
                 return False
         except Exception as e:
             logger.exception(f"Failed to check if DB is present : \n{e}")
+            raise Exception("Failed to check if DB is present")
     
     def createDB(self,db_name,client):
 
@@ -49,6 +53,7 @@ class MongoDB():
             return db
         except Exception as e:
             logger.exception(f"Failed to create DB : \n{e}")
+            raise Exception("Failed to create DB")
 
     def getDB(self,db_name,client):
 
@@ -57,7 +62,8 @@ class MongoDB():
             logger.info("DB retrieved")
             return db
         except Exception as e:
-            logger.exception(f"Failed to retriev DB : \n{e}")
+            logger.exception(f"Failed to retrieve DB : \n{e}")
+            raise Exception("Failed to retrieve DB")
     
     def dropDB(self,db_name,client):
 
@@ -67,6 +73,7 @@ class MongoDB():
                 logger.info(f"{db_name} has been dropped")
         except Exception as e:
             logger.exception(f"Failed to drop DB : \n{e}")
+            raise Exception("Failed to drop DB")
 
     def isCollectionpresent(self,db_name,collection_name,client):
 
@@ -81,6 +88,7 @@ class MongoDB():
                 return False
         except Exception as e:
             logger.exception(f"Failed to check if collection is present : \n{e}")
+            raise Exception("Failed to check if collection is present")
 
     def createCollection(self,db_name,collection_name,client):
 
@@ -91,6 +99,7 @@ class MongoDB():
             return collection
         except Exception as e:
             logger.exception(f"Failed to create collection : \n{e}")
+            raise Exception("Failed to create collection")
     
     def getCollection(self,db_name,collection_name,client):
 
@@ -101,6 +110,7 @@ class MongoDB():
             return collection
         except Exception as e:
             logger.exception(f"Failed to retrive collection : \n{e}")
+            raise Exception("Failed to retrieve collection")
 
     def getCollectionData(self,db_name,collection_name,client):
 
@@ -111,6 +121,7 @@ class MongoDB():
             return data.next()
         except Exception as e:
             logger.exception(f"Failed to retrive collection : \n{e}")
+            raise Exception("Failed to retrive collection")
     
 
     def dropCollection(self,db_name,collection_name,client):
@@ -122,6 +133,7 @@ class MongoDB():
             logger.info(f"{collection_name} has been dropped")
         except Exception as e:
             logger.exception(f"Failed to drop collection : \n{e}")
+            raise Exception("Failed to drop collection")
 
     def insertData(self,db_name,collection_name,data,client):
 
@@ -131,3 +143,4 @@ class MongoDB():
             logger.info("Data Inserted")
         except Exception as e:
             logger.exception(f"Failed to insert data : \n{e}")
+            raise Exception("Failed to insert data")

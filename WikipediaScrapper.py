@@ -16,6 +16,7 @@ class Scrapper():
             logger.info("Scrapper object initialized")
         except Exception as e:
             logger.exception(f'Something went wrong while Initialising Scrapper Object :\n{str(e)}')
+            raise Exception(f'Something went wrong while Initialising Scrapper Object')
 
     def getContent(self):
 
@@ -28,6 +29,7 @@ class Scrapper():
             return html
         except Exception as e:
             logger.exception(f'Something went wrong while Hitting the Page : \n {str(e)}')
+            raise Exception(f'Something went wrong while Hitting the Page ')
 
     def getTextdata(self,html):
 
@@ -37,6 +39,7 @@ class Scrapper():
             return summarize(info)
         except Exception as e:
             logger.exception(f'Something went wrong while fetching Text Data :\n{str(e)}')
+            raise Exception(f'Something went wrong while fetching Text Data ')
 
     def getReference(self,html):
 
@@ -46,6 +49,7 @@ class Scrapper():
             return beautifyLinkData(info,self.searchString)
         except Exception as e:
             logger.exception(f'Something went wrong while fetching Reference Links :\n{str(e)}')
+            raise Exception(f'Something went wrong while fetching Reference Links')
 
     def getImages(self,html):
         
@@ -55,5 +59,6 @@ class Scrapper():
             return beautifyImgdata(info)
         except Exception as e:
             logger.exception(f'Something went wrong while fetching Image Data :\n{str(e)}')
+            raise Exception(f'Something went wrong while fetching Image Data')
 
         
