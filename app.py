@@ -36,6 +36,7 @@ def scrap():
                     collection=db_obj.getCollectionData(db_name,collection_name,cursor)
                     data=collection
                     logger.info("Data already present in database")
+                    return render_template('Result.html',result=data)
 
                 else:
                     html=scrapper_obj.getContent()
