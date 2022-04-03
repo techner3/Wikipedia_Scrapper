@@ -1,4 +1,5 @@
 import pymongo
+import ssl
 from logger import getLog
 
 logger=getLog('mongoDB.py')
